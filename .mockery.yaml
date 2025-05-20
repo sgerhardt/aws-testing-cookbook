@@ -1,4 +1,4 @@
-all: true
-inpackage: true
-testonly: true
-case: snake
+packages:
+  aws-testing-cookbook/s3:
+    interfaces:
+      GetObjectAPI:
