@@ -1,1 +1,1 @@
-Provides sample code for testing with aws services whether using stdlib or testify+mockery.
+Provides sample code for testing with aws services, whether using stdlib or testify+mockery.
