@@ -85,10 +85,6 @@ func TestGetObjectFromS3ViaTestifyAndMockery(t *testing.T) {
 
 	for _, tt := range cases {
 		t.Run(tt.name, func(t *testing.T) {
-			ctx := context.TODO()
-
-			mockS3Client := NewMockGetObjectAPI(t)
-
 			expectedInput := &s3.GetObjectInput{
 				Bucket: &tt.bucket,
 				Key:    &tt.key,
@@ -98,6 +94,8 @@ func TestGetObjectFromS3ViaTestifyAndMockery(t *testing.T) {
 				Body: io.NopCloser(bytes.NewReader([]byte("this is the body foo bar baz"))),
 			}
 
+			ctx := context.TODO()
+			mockS3Client := NewMockGetObjectAPI(t)
 			mockS3Client.On("GetObject", ctx, expectedInput, mock.Anything).Return(mockReturn, nil)
 
 			content, err := GetObjectFromS3(ctx, mockS3Client, tt.bucket, tt.key)
