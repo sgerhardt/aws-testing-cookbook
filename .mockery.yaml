@@ -1,0 +1,4 @@
+all: true
+inpackage: true
+testonly: true
+case: snake
