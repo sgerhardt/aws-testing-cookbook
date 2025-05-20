@@ -2,3 +2,6 @@ packages:
   aws-testing-cookbook/s3:
     interfaces:
       GetObjectAPI:
+  aws-testing-cookbook/sqs:
+    interfaces:
+      ReceiveMessageAPI:
