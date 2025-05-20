@@ -1,4 +1,4 @@
-module awsInterfaces
+module aws-testing-cookbook
 
 go 1.24
 

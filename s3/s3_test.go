@@ -1,16 +1,16 @@
 package s3
 
 import (
-	"awsInterfaces/s3/mocks"
 	"bytes"
 	"context"
+	"io"
+	"strconv"
+	"testing"
+
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
-	"io"
-	"strconv"
-	"testing"
 )
 
 type mockGetObjectAPI func(ctx context.Context, params *s3.GetObjectInput, optFns ...func(*s3.Options)) (*s3.GetObjectOutput, error)
@@ -83,11 +83,11 @@ func TestGetObjectFromS3ViaTestifyAndMockery(t *testing.T) {
 		},
 	}
 
-	for i, tt := range cases {
-		t.Run(strconv.Itoa(i), func(t *testing.T) {
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
 			ctx := context.TODO()
 
-			mockS3Client := mocks.NewGetObjectAPI(t)
+			mockS3Client := NewMockGetObjectAPI(t)
 
 			expectedInput := &s3.GetObjectInput{
 				Bucket: &tt.bucket,

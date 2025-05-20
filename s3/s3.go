@@ -4,8 +4,9 @@ import (
 	"context"
 	"fmt"
 	"io"
+
+	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
-import "github.com/aws/aws-sdk-go-v2/service/s3"
 
 type GetObjectAPI interface {
 	GetObject(ctx context.Context, params *s3.GetObjectInput, optFns ...func(*s3.Options)) (*s3.GetObjectOutput, error)
@@ -20,9 +21,9 @@ func GetObjectFromS3(ctx context.Context, api GetObjectAPI, bucket, key string) 
 		return nil, err
 	}
 	defer func(Body io.ReadCloser) {
-		err = Body.Close()
-		if err != nil {
-			fmt.Printf("s3.GetObjectFromS3: error closing body:%+v", err)
+		cErr := Body.Close()
+		if cErr != nil {
+			fmt.Printf("s3.GetObjectFromS3: error closing body:%+v", cErr)
 		}
 	}(object.Body)
 
