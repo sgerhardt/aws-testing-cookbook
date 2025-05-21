@@ -7,7 +7,6 @@ package sqs
 import (
 	"context"
 
-	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/sqs"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -40,7 +39,7 @@ func (_m *MockReceiveMessageAPI) EXPECT() *MockReceiveMessageAPI_Expecter {
 }
 
 // ReceiveMessage provides a mock function for the type MockReceiveMessageAPI
-func (_mock *MockReceiveMessageAPI) ReceiveMessage(ctx context.Context, params *sqs.ReceiveMessageInput, optFns ...func(*s3.Options)) (*sqs.ReceiveMessageOutput, error) {
+func (_mock *MockReceiveMessageAPI) ReceiveMessage(ctx context.Context, params *sqs.ReceiveMessageInput, optFns ...func(*sqs.Options)) (*sqs.ReceiveMessageOutput, error) {
 	var tmpRet mock.Arguments
 	if len(optFns) > 0 {
 		tmpRet = _mock.Called(ctx, params, optFns)
@@ -55,17 +54,17 @@ func (_mock *MockReceiveMessageAPI) ReceiveMessage(ctx context.Context, params *
 
 	var r0 *sqs.ReceiveMessageOutput
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *sqs.ReceiveMessageInput, ...func(*s3.Options)) (*sqs.ReceiveMessageOutput, error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *sqs.ReceiveMessageInput, ...func(*sqs.Options)) (*sqs.ReceiveMessageOutput, error)); ok {
 		return returnFunc(ctx, params, optFns...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *sqs.ReceiveMessageInput, ...func(*s3.Options)) *sqs.ReceiveMessageOutput); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *sqs.ReceiveMessageInput, ...func(*sqs.Options)) *sqs.ReceiveMessageOutput); ok {
 		r0 = returnFunc(ctx, params, optFns...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*sqs.ReceiveMessageOutput)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, *sqs.ReceiveMessageInput, ...func(*s3.Options)) error); ok {
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *sqs.ReceiveMessageInput, ...func(*sqs.Options)) error); ok {
 		r1 = returnFunc(ctx, params, optFns...)
 	} else {
 		r1 = ret.Error(1)
@@ -87,9 +86,9 @@ func (_e *MockReceiveMessageAPI_Expecter) ReceiveMessage(ctx interface{}, params
 		append([]interface{}{ctx, params}, optFns...)...)}
 }
 
-func (_c *MockReceiveMessageAPI_ReceiveMessage_Call) Run(run func(ctx context.Context, params *sqs.ReceiveMessageInput, optFns ...func(*s3.Options))) *MockReceiveMessageAPI_ReceiveMessage_Call {
+func (_c *MockReceiveMessageAPI_ReceiveMessage_Call) Run(run func(ctx context.Context, params *sqs.ReceiveMessageInput, optFns ...func(*sqs.Options))) *MockReceiveMessageAPI_ReceiveMessage_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		variadicArgs := args[2].([]func(*s3.Options))
+		variadicArgs := args[2].([]func(*sqs.Options))
 		run(args[0].(context.Context), args[1].(*sqs.ReceiveMessageInput), variadicArgs...)
 	})
 	return _c
@@ -100,7 +99,7 @@ func (_c *MockReceiveMessageAPI_ReceiveMessage_Call) Return(receiveMessageOutput
 	return _c
 }
 
-func (_c *MockReceiveMessageAPI_ReceiveMessage_Call) RunAndReturn(run func(ctx context.Context, params *sqs.ReceiveMessageInput, optFns ...func(*s3.Options)) (*sqs.ReceiveMessageOutput, error)) *MockReceiveMessageAPI_ReceiveMessage_Call {
+func (_c *MockReceiveMessageAPI_ReceiveMessage_Call) RunAndReturn(run func(ctx context.Context, params *sqs.ReceiveMessageInput, optFns ...func(*sqs.Options)) (*sqs.ReceiveMessageOutput, error)) *MockReceiveMessageAPI_ReceiveMessage_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -5,3 +5,6 @@ packages:
   aws-testing-cookbook/sqs:
     interfaces:
       ReceiveMessageAPI:
+  aws-testing-cookbook/ec2:
+    interfaces:
+      DescribeInstancesAPI:
