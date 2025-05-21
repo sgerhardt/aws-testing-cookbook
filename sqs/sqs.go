@@ -11,7 +11,7 @@ import (
 )
 
 type ReceiveMessageAPI interface {
-	ReceiveMessage(ctx context.Context, params *sqs.ReceiveMessageInput, optFns ...func(*s3.Options)) (*sqs.ReceiveMessageOutput, error)
+	ReceiveMessage(ctx context.Context, params *sqs.ReceiveMessageInput, optFns ...func(*sqs.Options)) (*sqs.ReceiveMessageOutput, error)
 }
 
 type Actions struct {
