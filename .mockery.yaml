@@ -8,3 +8,6 @@ packages:
   aws-testing-cookbook/ec2:
     interfaces:
       DescribeInstancesAPI:
+  aws-testing-cookbook/sns:
+    interfaces:
+      PublishAPI:
